@@ -23,12 +23,11 @@ export default function BMIForm() {
   }, [state])
 
   return (
-    <div className="bg-white p-6 shadow rounded-lg">
-      <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">Add New Record</h3>
+    <div className="">
       <form ref={formRef} action={action} className="space-y-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div>
-            <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="weight" className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-500">
               Weight (kg)
             </label>
             <input
@@ -37,12 +36,12 @@ export default function BMIForm() {
               name="weight"
               id="weight"
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
+              className="block w-full rounded-xl border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:bg-white focus:ring-0 sm:text-sm transition-all duration-200 ease-in-out"
               placeholder="e.g. 70.5"
             />
           </div>
           <div>
-            <label htmlFor="height" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="height" className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-500">
               Height (cm)
             </label>
             <input
@@ -51,12 +50,12 @@ export default function BMIForm() {
               name="height"
               id="height"
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
+              className="block w-full rounded-xl border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:bg-white focus:ring-0 sm:text-sm transition-all duration-200 ease-in-out"
               placeholder="e.g. 175"
             />
           </div>
           <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="date" className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-500">
               Date
             </label>
             <input
@@ -65,7 +64,7 @@ export default function BMIForm() {
               id="date"
               required
               defaultValue={new Date().toISOString().split('T')[0]}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
+              className="block w-full rounded-xl border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:bg-white focus:ring-0 sm:text-sm transition-all duration-200 ease-in-out"
             />
           </div>
         </div>
@@ -80,7 +79,7 @@ export default function BMIForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+            className="inline-flex justify-center rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 disabled:opacity-50 transition-all duration-200"
           >
             {isPending ? 'Saving...' : 'Save Record'}
           </button>

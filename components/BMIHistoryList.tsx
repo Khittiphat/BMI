@@ -66,138 +66,138 @@ export default function BMIHistoryList({ records }: { records: BMIRecord[] }) {
 
   if (records.length === 0) {
     return (
-      <div className="text-center py-8 text-gray-500 bg-white rounded-lg shadow">
-        No records found. Start by adding your first BMI record!
+      <div className="text-center py-12 text-gray-500 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50">
+        <p className="text-sm">No records found.</p>
+        <p className="mt-1 text-sm font-semibold text-gray-900">Start by adding your first BMI record!</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-white shadow overflow-hidden rounded-lg">
-      <div className="px-4 py-5 sm:px-6">
-        <h3 className="text-lg leading-6 font-medium text-gray-900">History</h3>
-      </div>
-      <div className="border-t border-gray-200">
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Date
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Weight (kg)
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Height (cm)
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  BMI
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {records.map((record) => {
-                const isEditing = editingId === record.id
-                const status = getBMIStatus(record.bmi_value)
+    <div className="overflow-hidden rounded-xl border border-gray-100">
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-gray-100">
+          <thead className="bg-gray-50/80">
+            <tr>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Date
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Weight (kg)
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Height (cm)
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                BMI
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Status
+              </th>
+              <th scope="col" className="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-100">
+            {records.map((record) => {
+              const isEditing = editingId === record.id
+              const status = getBMIStatus(record.bmi_value)
 
-                if (isEditing) {
-                  return (
-                    <tr key={record.id} className="bg-blue-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          type="date"
-                          value={editForm.date}
-                          onChange={(e) => setEditForm({...editForm, date: e.target.value})}
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-xs border p-1"
-                        />
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={editForm.weight}
-                          onChange={(e) => setEditForm({...editForm, weight: parseFloat(e.target.value)})}
-                          className="block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-xs border p-1"
-                        />
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={editForm.height}
-                          onChange={(e) => setEditForm({...editForm, height: parseFloat(e.target.value)})}
-                          className="block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-xs border p-1"
-                        />
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        -
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                        -
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                        <button
-                          onClick={handleUpdate}
-                          className="text-green-600 hover:text-green-900"
-                        >
-                          Save
-                        </button>
-                        <button
-                          onClick={cancelEdit}
-                          className="text-gray-600 hover:text-gray-900"
-                        >
-                          Cancel
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                }
-
+              if (isEditing) {
                 return (
-                  <tr key={record.id}>
+                  <tr key={record.id} className="bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {new Date(record.recorded_at).toLocaleDateString()}
+                      <input
+                        type="date"
+                        value={editForm.date}
+                        onChange={(e) => setEditForm({...editForm, date: e.target.value})}
+                        className="block w-full rounded-lg border-gray-200 bg-white px-2 py-1 text-xs focus:border-gray-900 focus:ring-0"
+                      />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {record.weight}
+                      <input
+                        type="number"
+                        step="0.1"
+                        value={editForm.weight}
+                        onChange={(e) => setEditForm({...editForm, weight: parseFloat(e.target.value)})}
+                        className="block w-20 rounded-lg border-gray-200 bg-white px-2 py-1 text-xs focus:border-gray-900 focus:ring-0"
+                      />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {record.height}
+                      <input
+                        type="number"
+                        step="0.1"
+                        value={editForm.height}
+                        onChange={(e) => setEditForm({...editForm, height: parseFloat(e.target.value)})}
+                        className="block w-20 rounded-lg border-gray-200 bg-white px-2 py-1 text-xs focus:border-gray-900 focus:ring-0"
+                      />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {record.bmi_value}
+                      -
                     </td>
-                    <td className={`px-6 py-4 whitespace-nowrap text-sm font-medium ${status.color}`}>
-                      {status.label}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                      -
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
                       <button
-                        onClick={() => startEdit(record)}
-                        className="text-indigo-600 hover:text-indigo-900"
+                        onClick={handleUpdate}
+                        className="text-green-600 hover:text-green-900 transition-colors"
                       >
-                        Edit
+                        Save
                       </button>
                       <button
-                        onClick={() => handleDelete(record.id)}
-                        disabled={deletingId === record.id}
-                        className="text-red-600 hover:text-red-900 disabled:opacity-50"
+                        onClick={cancelEdit}
+                        className="text-gray-400 hover:text-gray-600 transition-colors"
                       >
-                        {deletingId === record.id ? '...' : 'Delete'}
+                        Cancel
                       </button>
                     </td>
                   </tr>
                 )
-              })}
-            </tbody>
-          </table>
-        </div>
+              }
+
+              return (
+                <tr key={record.id} className="hover:bg-gray-50/50 transition-colors">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {new Date(record.recorded_at).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {record.weight}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {record.height}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                    {record.bmi_value}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                      status.color.replace('text-', 'bg-').replace('600', '100') + ' ' + status.color.replace('600', '800')
+                    }`}>
+                      {status.label}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
+                    <button
+                      onClick={() => startEdit(record)}
+                      className="text-gray-400 hover:text-gray-900 transition-colors"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(record.id)}
+                      disabled={deletingId === record.id}
+                      className="text-gray-400 hover:text-red-600 disabled:opacity-30 transition-colors"
+                    >
+                      {deletingId === record.id ? '...' : 'Delete'}
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   )
