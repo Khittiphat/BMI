@@ -15,7 +15,7 @@ export default function LoginPage() {
   }, [state])
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50">
       <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-6 shadow-md">
         <div>
           <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
@@ -71,6 +71,12 @@ export default function LoginPage() {
             </Link>
           </div>
         </form>
+      </div>
+      
+      <div className="mt-8 text-center text-gray-600 text-sm space-y-1">
+        <p>username : poreiei</p>
+        <p>password : 1234500</p>
+        <p>67162110556-4</p>
       </div>
     </div>
   )
